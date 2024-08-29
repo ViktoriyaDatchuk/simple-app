@@ -13,5 +13,14 @@ export const postAPI = createApi({
         },
       }),
     }),
+    signIn: build.query({
+      query: (username: string) => ({
+        url: '/users',
+        method: 'POST',
+        params: {
+          _username: username,
+        },
+      }),
+    }),
   }),
 });
