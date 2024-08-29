@@ -5,12 +5,15 @@ import classes from './SignIn.module.css';
 
 export function SignIn() {
   const [user, setUser] = useState('');
-  const [signInUsers] = postAPI.useLazySignInQuery();
+  const [signInUsers, { isError }] = postAPI.useLazySignInQuery();
 
   const submitHandler = async (event: FormEvent) => {
     event.preventDefault();
     await signInUsers(user).unwrap();
     setUser('');
+    if (isError) {
+      alert('User was not found!!!');
+    }
   };
 
   return (

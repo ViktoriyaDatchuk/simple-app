@@ -18,7 +18,7 @@ export const postAPI = createApi({
         url: '/users',
         method: 'POST',
         params: {
-          _username: username,
+          username: username,
         },
       }),
     }),
