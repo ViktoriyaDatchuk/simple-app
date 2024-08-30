@@ -2,10 +2,12 @@ import { FormEvent, useState } from 'react';
 import { Header } from '../../components/Header/Header';
 import { postAPI } from '../../services/postService';
 import classes from './SignIn.module.css';
+import { useNavigate } from 'react-router-dom';
 
 export function SignIn() {
   const [user, setUser] = useState('');
   const [signInUsers, { isError }] = postAPI.useLazySignInQuery();
+  const navigate = useNavigate();
 
   const submitHandler = async (event: FormEvent) => {
     event.preventDefault();
@@ -13,6 +15,8 @@ export function SignIn() {
     setUser('');
     if (isError) {
       alert('User was not found!!!');
+    } else {
+      navigate('/');
     }
   };
 
